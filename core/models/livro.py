@@ -12,8 +12,7 @@ class Livro(models.Model):
     preco = models.DecimalField(max_digits=7, decimal_places=2, default=0, blank=True, null=True)
     categoria = models.ForeignKey(Categoria, on_delete=models.PROTECT, related_name="livros", blank=True, null=True)
     editora = models.ForeignKey(Editora, on_delete=models.PROTECT, related_name="livros", blank=True, null=True)
-    autores = models.ForeignKey(Autor, on_delete=models.PROTECT, related_name="livrosAutor", blank=True, null=True) #livro com 1 autor
-    coautor = models.ForeignKey(Autor, on_delete=models.PROTECT, related_name="livrosCoautor", blank=True, null=True) #livro com 1 coautor
+    autores = models.ManyToManyField(Autor, related_name="livros") #livro com varios autores
 
     def __str__(self):
         return f"({self.id}) {self.titulo} ({self.quantidade})"
