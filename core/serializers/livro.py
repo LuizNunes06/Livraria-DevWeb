@@ -13,4 +13,10 @@ class LivroDetailSerializer(ModelSerializer):
     class Meta:
         model = Livro
         fields = "__all__"
-        depth = 1 # Permite a apresentação dos dados relacionados, mostras nos valores no lugar do id.
+        depth = 1  # Permite a apresentação dos dados relacionados, mostras nos valores no lugar do id.
+
+
+class LivroListSerializer(ModelSerializer):
+    class Meta:
+        model = Livro
+        fields = ["id", "titulo", "preco"]
