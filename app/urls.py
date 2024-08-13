@@ -1,3 +1,5 @@
+from django.conf import settings
+from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import include, path
 
@@ -16,14 +18,15 @@ from core.views import (
     LivroViewset,
     UserViewSet,
 )
+from uploader.router import router as uploader_router
 
 router = DefaultRouter()
 
 router.register(r"categorias", CategoriaViewSet)
-router.register(r"users", UserViewSet, basename="users")
+router.register(r"usuarios", UserViewSet, basename="users")
 router.register(r"editoras", EditoraViewSet)
 router.register(r"autores", AutorViewset)
-router.register(r"livro", LivroViewset)
+router.register(r"livros", LivroViewset)
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -44,4 +47,8 @@ urlpatterns = [
     path("token/refresh/", TokenRefreshView.as_view(), name="token_refresh"),
     # API
     path("api/", include(router.urls)),
+    # Uploader
+    path("api/media/", include(uploader_router.urls)),
 ]
+
+urlpatterns += static(settings.MEDIA_ENDPOINT, document_root=settings.MEDIA_ROOT)
