@@ -13,11 +13,8 @@ class UserSerializer(ModelSerializer):
         required=False,
         write_only=True,
     )
-     
-    foto = ImageSerializer(
-        required=False,
-        read_only=True
-    )
+
+    foto = ImageSerializer(required=False, read_only=True)
 
     class Meta:
         model = User
