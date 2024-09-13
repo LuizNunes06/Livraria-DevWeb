@@ -17,6 +17,7 @@ from core.views import (
     EditoraViewSet,
     LivroViewset,
     UserViewSet,
+    CompraViewSet
 )
 from uploader.router import router as uploader_router
 
@@ -27,6 +28,7 @@ router.register(r"usuarios", UserViewSet, basename="users")
 router.register(r"editoras", EditoraViewSet)
 router.register(r"autores", AutorViewset)
 router.register(r"livros", LivroViewset)
+router.register(r"compras", CompraViewSet)
 
 urlpatterns = [
     path("admin/", admin.site.urls),
