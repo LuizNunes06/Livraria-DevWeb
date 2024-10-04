@@ -1,7 +1,7 @@
 from django.db import models
 
-from .user import User
 from .livro import Livro
+from .user import User
 
 
 class Compra(models.Model):
